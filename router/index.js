@@ -35,7 +35,7 @@ router.post('/login',(req,res) => {
 })
 router.post('/getAllUser',(req,res)=> {
   const { user_account } = req.body;
-  const sql = `select * from users where user_account!='${user_account}'`;
+  const sql = `select * from users where user_account!='${user_account}' and user_status=1`;
   db.query(sql).then(response => {
   let userList = response.map((item) => {
     return {
